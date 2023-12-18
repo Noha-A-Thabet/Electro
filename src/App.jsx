@@ -12,6 +12,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import CategoryBar from "./Components/category-bar/CategoryBar";
 import SingleProduct from "./Pages/SingleProduct";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path=":id" element={<SingleProduct />} />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
         </Route>
       </Routes>
