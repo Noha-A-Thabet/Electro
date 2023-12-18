@@ -1,5 +1,5 @@
 import "../category-section/Category.css";
-import { useEffect, useContext  } from "react";
+import { useEffect, useContext } from "react";
 import { WishlistContext } from "../../WishlistContext/WishlistProvider";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
@@ -8,7 +8,8 @@ import MobileList from "./MobileList";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
 const Mobiles = () => {
-  const {Electronics, mobileData, setMobileData, Item} = useContext(WishlistContext);
+  const { Electronics, mobileData, setMobileData, Item } =
+    useContext(WishlistContext);
 
   // fetching data
   const fetchMobileData = () => {

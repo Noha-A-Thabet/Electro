@@ -8,24 +8,26 @@ import "../category-section/Category.css";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../../WishlistContext/WishlistProvider";
+import { SingleProductContext } from "../Context/SingleProductContext";
 
 // eslint-disable-next-line react/prop-types
 const MobileList = ({ data }) => {
-  const { addToCartHandler} = useContext(CartContext);
-  const {handleFavorite, Item} = useContext(WishlistContext);
+  const { addToCartHandler } = useContext(CartContext);
+  const { handleFavorite, Item } = useContext(WishlistContext);
+  const { displayProductData } = useContext(SingleProductContext);
 
   // eslint-disable-next-line react/prop-types
-  const {name, image, price } = data;
+  const { name, image, price } = data;
 
   return (
     <Grid item xs={6} md={3} spacing={3}>
       <Item className="product-image">
         <div className="wishlist">
-     
-       <FavoriteBorderOutlinedIcon  onClick={() => {
-                    handleFavorite(data)
-         }}/>
-           
+          <FavoriteBorderOutlinedIcon
+            onClick={() => {
+              handleFavorite(data);
+            }}
+          />
         </div>
         <img src={image} />
       </Item>
@@ -48,6 +50,13 @@ const MobileList = ({ data }) => {
           <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
         </div>
         <div className="product-price">${price}</div>
+        <button
+          onClick={() => {
+            displayProductData(data);
+          }}
+        >
+          View
+        </button>
       </Item>
     </Grid>
   );
