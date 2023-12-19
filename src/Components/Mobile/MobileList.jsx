@@ -8,32 +8,37 @@ import "../category-section/Category.css";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../../WishlistContext/WishlistProvider";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const MobileList = ({ data }) => {
-  const { addToCartHandler} = useContext(CartContext);
-  const {handleFavorite, Item} = useContext(WishlistContext);
+  const { addToCartHandler } = useContext(CartContext);
+  const { handleFavorite, Item } = useContext(WishlistContext);
 
   // eslint-disable-next-line react/prop-types
-  const {name, image, price } = data;
+  const { name, image, price, id } = data;
 
   return (
     <Grid item xs={6} md={3} spacing={3}>
       <Item className="product-image">
         <div className="wishlist">
-     
-       <FavoriteBorderOutlinedIcon  onClick={() => {
-                    handleFavorite(data)
-         }}/>
-           
+          <FavoriteBorderOutlinedIcon
+            onClick={() => {
+              handleFavorite(data);
+            }}
+          />
         </div>
-        <img src={image} />
+        <Link to={`/${id}`} style={{ textDecoration: "none" }}>
+          <img src={image} />
+        </Link>
       </Item>
 
       <Item className="product">
         <Box className="product-details">
           <Item sx={{ flexGrow: 1 }}>
-            <h3 className="product-title">{name}</h3>
+            <Link to={`/${id}`} style={{ textDecoration: "none" }}>
+              <h3 className="product-title">{name}</h3>
+            </Link>
           </Item>
 
           <Item className="cart-icon">
