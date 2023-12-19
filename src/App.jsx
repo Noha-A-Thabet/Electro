@@ -11,7 +11,7 @@ import Wishlist from "./WishlistContext/wishlist";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import CategoryBar from "./Components/category-bar/CategoryBar";
-
+import SingleProduct from "./Pages/SingleProduct";
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
             <Route path="tablets" element={<Tablets />} />
             <Route path="cart" element={<Cart />} />
             <Route path="wishlist" element={<Wishlist />} />
+            <Route path=":id" element={<SingleProduct />} />
           </Route>
         </Route>
       </Routes>

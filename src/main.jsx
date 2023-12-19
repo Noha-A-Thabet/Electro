@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import CartContextProvider from "./Components/Context/CartContext.jsx";
 import WishlistProvider from "./WishlistContext/WishlistProvider";
 import SearchContextProvider from "./Components/Context/SearchContext.jsx";
-import SinglePorductProvider from "./Components/Context/SingleProduct.jsx";
+import SinglePorductProvider from "./Components/Context/SingleProductContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
