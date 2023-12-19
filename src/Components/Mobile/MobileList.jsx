@@ -34,7 +34,7 @@ const MobileList = ({ data }) => {
       <Item className="product">
         <Box className="product-details">
           <Item sx={{ flexGrow: 1 }}>
-            <Link to={`product/${id}`}>
+            <Link to={`/${id}`}>
               <h3 className="product-title">{name}</h3>
             </Link>
           </Item>

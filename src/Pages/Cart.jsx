@@ -36,7 +36,6 @@ const Cart = () => {
             {items.length === 0 && <h1>Fill your cart with tech dreams.</h1>}
 
             {items.map((item, index) => {
-              console.log(item.quantity);
               // get subTotal
               const subTotal = (item.quantity * item.price).toFixed(2);
               return (

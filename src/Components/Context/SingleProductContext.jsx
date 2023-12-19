@@ -1,33 +1,8 @@
-// import { createContext } from "react";
-// import data from "../../../Data/db.json";
-
-// export const SingleProductContext = createContext({});
-
-// const displayProductData = (productId) => {
-//   const item = data.Electronics.find((item) => {
-//     return item.id == productId;
-//   });
-//   return item;
-// };
-
-// // eslint-disable-next-line react/prop-types
-// const SinglePorductProvider = ({ children }) => {
-//   return (
-//     <SingleProductContext.Provider
-//       value={{
-//         displayProductData,
-//       }}
-//     >
-//       {children}
-//     </SingleProductContext.Provider>
-//   );
-// };
-
-// export default SinglePorductProvider;
-
 import { createContext } from "react";
 export const SingleProductContext = createContext({});
 import data from "../../../Data/db.json";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 
 // find element
 const searchForElement = (id) => {
@@ -37,10 +12,20 @@ const searchForElement = (id) => {
   return foundedElement;
 };
 
+// Item for Grid design
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#101010" : "gray.200",
+  border: "none",
+  ...theme.typography.body2,
+  padding: theme.spacing(0.6),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
 // eslint-disable-next-line react/prop-types
 const SingProductProvider = ({ children }) => {
   return (
-    <SingleProductContext.Provider value={{ searchForElement }}>
+    <SingleProductContext.Provider value={{ searchForElement, Item }}>
       {children}
     </SingleProductContext.Provider>
   );
