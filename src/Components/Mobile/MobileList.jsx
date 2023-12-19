@@ -28,13 +28,15 @@ const MobileList = ({ data }) => {
             }}
           />
         </div>
-        <img src={image} />
+        <Link to={`/${id}`} style={{ textDecoration: "none" }}>
+          <img src={image} />
+        </Link>
       </Item>
 
       <Item className="product">
         <Box className="product-details">
           <Item sx={{ flexGrow: 1 }}>
-            <Link to={`/${id}`}>
+            <Link to={`/${id}`} style={{ textDecoration: "none" }}>
               <h3 className="product-title">{name}</h3>
             </Link>
           </Item>
