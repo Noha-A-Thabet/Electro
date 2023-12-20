@@ -13,6 +13,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import CategoryBar from "./Components/category-bar/CategoryBar";
 import SingleProduct from "./Pages/SingleProduct";
 import ErrorPage from "./Pages/ErrorPage";
+import UserForm from "./Components/UserForm/userForm";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="wishlist" element={<Wishlist />} />
             <Route path=":id" element={<SingleProduct />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path="userForm" element={<UserForm />} />
           </Route>
         </Route>
       </Routes>
