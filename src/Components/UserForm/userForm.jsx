@@ -1,16 +1,13 @@
 import { Paper, Chip, Switch, Container } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import Person2Icon from "@mui/icons-material/Person2";
-import { useState } from "react";
+import { useContext } from "react";
 import SignUp from "./SignUp";
 import Login from "./Login";
+import { AuthContext } from "../Context/AuthContext";
 
 const UserForm = () => {
-  const [checked, setChecked] = useState(true);
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+  const { checked, handleChange } = useContext(AuthContext);
 
   return (
     <Container
