@@ -4,10 +4,10 @@ import Person2Icon from "@mui/icons-material/Person2";
 import { useContext } from "react";
 import SignUp from "./SignUp";
 import Login from "./Login";
-import { AuthContext } from "../Context/AuthContext";
+import { SignUpContext } from "../Context/SignUpContext";
 
 const UserForm = () => {
-  const { checked, handleChange } = useContext(AuthContext);
+  const { checked, handleChange } = useContext(SignUpContext);
 
   return (
     <Container
@@ -16,11 +16,17 @@ const UserForm = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "50vh",
+        marginTop: "50px",
       }}
     >
       <Paper
         elevation={3}
-        style={{ padding: "20px", width: "500px", textAlign: "center" }}
+        style={{
+          padding: "20px",
+          width: "500px",
+          textAlign: "center",
+          marginTop: "80px",
+        }}
       >
         {checked ? (
           <Chip
