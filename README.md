@@ -30,4 +30,4 @@ To run this project locally, follow these steps:
 ### Installation
 1. Clone the project from GitHub:
    ```bash
-   git clone https://github.com/yasmino/Electro
+   git clone https://github.com/Noha-A-Thabet/Electro.git
