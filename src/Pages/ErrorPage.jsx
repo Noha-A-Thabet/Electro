@@ -10,7 +10,7 @@ const ErrorPage = () => {
         <Typography variant="h4">Page not found</Typography>
 
         <Typography variant="h4">
-          Go Back{" "}
+          Go Back
           <Link to="/">
             <span>Home</span>
           </Link>

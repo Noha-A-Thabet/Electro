@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 export const SignUpContext = createContext({});
 
@@ -95,6 +96,17 @@ const SignUpContextProvider = ({ children }) => {
     }
     setUserAuth(initalState);
   };
+
+  const navigate = useNavigate();
+  // redirect user after signUp
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    }
+    return () => clearTimeout();
+  }, [success]);
 
   return (
     <SignUpContext.Provider

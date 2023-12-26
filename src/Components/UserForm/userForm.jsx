@@ -30,15 +30,15 @@ const UserForm = () => {
       >
         {checked ? (
           <Chip
-            icon={<LockIcon />}
-            label="Sign up"
+            icon={<Person2Icon />}
+            label="Login"
             color="primary"
             variant="outlined"
           />
         ) : (
           <Chip
-            icon={<Person2Icon />}
-            label="Log in"
+            icon={<LockIcon />}
+            label="SignUp"
             color="primary"
             variant="outlined"
           />
@@ -52,7 +52,7 @@ const UserForm = () => {
         />
 
         <br />
-        {checked ? <SignUp /> : <Login />}
+        {checked ? <Login /> : <SignUp />}
       </Paper>
     </Container>
   );

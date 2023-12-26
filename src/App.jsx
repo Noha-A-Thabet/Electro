@@ -13,9 +13,9 @@ import Navbar from "./Components/Navbar/Navbar";
 import CategoryBar from "./Components/category-bar/CategoryBar";
 import SingleProduct from "./Pages/SingleProduct";
 import ErrorPage from "./Pages/ErrorPage";
-import Login from "./Components/UserForm/Login";
-import SignUp from "./Components/UserForm/SignUp";
+import LoginForm from "./Components/UserAuth/Login";
 import UserForm from "./Components/UserForm/userForm";
+import SignUpForm from "./Components/UserAuth/SignUp";
 
 function App() {
   return (
@@ -32,10 +32,10 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path=":id" element={<SingleProduct />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="userForm/login" element={<Login />} />
-            <Route path="userForm/signUp" element={<SignUp />} />
             <Route path="userForm" element={<UserForm />} />
+            <Route path="signUp" element={<SignUpForm />} />
+            <Route path="login" element={<LoginForm />} />
+            <Route path="*" element={<ErrorPage />} />
           </Route>
         </Route>
       </Routes>

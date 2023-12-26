@@ -20,6 +20,8 @@ import { SignUpContext } from "../Context/SignUpContext";
 import "./form.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { LoginContext } from "../Context/LoginContext";
+import { Link } from "react-router-dom";
+
 const Login = () => {
   const { showPassword, handleClickShowPassword, handleMouseDownPassword } =
     useContext(SignUpContext);
@@ -110,6 +112,15 @@ const Login = () => {
           </Alert>
         )}
       </form>
+
+      <Box>
+        <Link to="/signUp">
+          <Typography variant="p" sx={{ color: "black" }}>
+            Create new account
+          </Typography>
+        </Link>
+      </Box>
+
       {/* modal for user */}
 
       {userLogin && (
