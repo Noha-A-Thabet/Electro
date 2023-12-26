@@ -11,11 +11,13 @@ import {
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import RegistrationForm from "../registration/registrationform";
+// import RegistrationForm from "../registration/registrationform";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../../WishlistContext/WishlistProvider";
 import SearchBar from "../SearchBar/SearchBar";
+// import UserForm from "../UserForm/userForm";
+import PersonIcon from "@mui/icons-material/Person";
 
 const Navbar = () => {
   const { items } = useContext(CartContext);
@@ -74,7 +76,9 @@ const Navbar = () => {
 
                   {/* login */}
                   <Button className="nav-btn registericon">
-                    <RegistrationForm />
+                    <Link to="userForm">
+                      <PersonIcon sx={{ color: "black" }} />
+                    </Link>
                   </Button>
 
                   {/* wishList */}
