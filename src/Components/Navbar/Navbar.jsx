@@ -25,7 +25,13 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: "white" }}>
+      <AppBar
+        position="sticky"
+        sx={{
+          backgroundColor: "white",
+          top: "0",
+        }}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Grid container sx={{ p: 1 }} className="Nav-Bar">

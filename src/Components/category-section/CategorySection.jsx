@@ -6,7 +6,7 @@ import Mobiles from "../Mobile/Mobiles";
 
 const CategorySection = () => {
   return (
-    <Container maxWidth="lg" sx={{ height: "100vh" }}>
+    <Container maxWidth="lg" sx={{ minHeigh: "100vh", position: "relative" }}>
       <Mobiles />
       <Tablet />
       <Laptop />
