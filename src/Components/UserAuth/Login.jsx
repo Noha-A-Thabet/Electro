@@ -138,7 +138,7 @@ const Login = () => {
           </p>
           {alert && (
             <Alert severity="error">
-              Your email and password do not match please try again
+              Your email or password do not match please try again
             </Alert>
           )}
         </form>

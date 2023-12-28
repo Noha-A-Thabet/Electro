@@ -73,24 +73,28 @@ const LoginContextProvider = ({ children }) => {
 
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      localStorage.setItem("userAuth", JSON.stringify(userAuth));
       setErrors({});
 
-      setUserAuth(initalState);
       const loginEmail = userAuth.email;
       const loginPassword = userAuth.password;
 
       const data = JSON.parse(localStorage.getItem("users"));
+      if (!data) {
+        validationErrors.email =
+          "Check that you have the right email address or password";
+        setAlert(true);
+      }
       const user = data.find(
         (user) => user.email === loginEmail && user.password === loginPassword
       );
       if (user) {
         const { name } = user;
-        console.log(name);
+
         setUserName(name);
         setUserLogin(true);
+        setUserAuth(initalState);
+        setAlert(false);
       } else {
-        console.log("not");
         setUserLogin(false);
         setAlert(true);
       }

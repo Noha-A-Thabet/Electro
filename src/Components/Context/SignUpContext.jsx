@@ -75,30 +75,39 @@ const SignUpContextProvider = ({ children }) => {
 
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      setSuccess(true);
-
-      setErrors({});
       //localStorage
       const existingUsersJSON = localStorage.getItem("users");
       const existingUsers = existingUsersJSON
         ? JSON.parse(existingUsersJSON)
         : [];
 
-      // Add a new user to the existing users array
-      existingUsers.push({
-        name: userAuth.name,
-        email: userAuth.email,
-        password: userAuth.password,
-      });
+      const isAlreadySaved = existingUsers.find(
+        (user) => user.email === userAuth.email
+      );
+      console.log(isAlreadySaved);
 
-      // Store the updated users array back in local storage
-      localStorage.setItem("users", JSON.stringify(existingUsers));
+      if (!isAlreadySaved) {
+        // Add a new user to the existing users array
+        existingUsers.push({
+          name: userAuth.name,
+          email: userAuth.email,
+          password: userAuth.password,
+        });
+
+        // Store the updated users array back in local storage
+        localStorage.setItem("users", JSON.stringify(existingUsers));
+        setErrors({});
+        setUserAuth(initalState);
+        setSuccess(true);
+      } else {
+        validationErrors.email =
+          "The email address entered already exists in our database - try logging in or entering a different email address.";
+      }
     }
-    setUserAuth(initalState);
   };
 
   const navigate = useNavigate();
-  // redirect user after signUp
+  //  redirect user after signUp
   useEffect(() => {
     if (success) {
       setTimeout(() => {
