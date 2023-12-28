@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import { CartContext } from "../Components/Context/CartContext";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,12 +8,24 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import Typography from "@mui/material/Typography";
+import { Typography, Button, Container, Box } from "@mui/material";
 import "./cart.css";
+import { LoginContext } from "../Components/Context/LoginContext";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
+  const { userLogin } = useContext(LoginContext);
   const { removeFromCartIcon, addToCartHandler, items, total, clearCartItems } =
     useContext(CartContext);
+
+  const navigate = useNavigate();
+  const checkOutProcess = () => {
+    if (!userLogin) {
+      navigate("/login");
+    } else {
+      navigate("/cart");
+    }
+  };
 
   return (
     <Container maxWidth="lg" sx={{ height: "100vh" }}>
@@ -105,15 +115,28 @@ const Cart = () => {
               }}
             >
               <Typography variant="h6">Total : ${total.toFixed(2)}</Typography>
-              <Button
-                variant="outlined"
-                color="error"
-                onClick={() => {
-                  clearCartItems();
-                }}
-              >
-                Clear Cart
-              </Button>
+              <Box>
+                <Button
+                  variant="contained"
+                  color="success"
+                  style={{ marginRight: "5px" }}
+                  onClick={() => {
+                    checkOutProcess();
+                  }}
+                >
+                  Checkout
+                </Button>
+
+                <Button
+                  variant="outlined"
+                  color="error"
+                  onClick={() => {
+                    clearCartItems();
+                  }}
+                >
+                  Clear Cart
+                </Button>
+              </Box>
             </TableCell>
           </>
         )}

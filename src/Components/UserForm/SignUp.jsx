@@ -8,13 +8,15 @@ import {
   IconButton,
   Button,
   Alert,
+  Typography,
+  Box,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import { SignUpContext } from "../Context/SignUpContext";
 import "./form.css";
-
+import { Link } from "react-router-dom";
 const SignUp = () => {
   const {
     showPassword,
@@ -100,6 +102,13 @@ const SignUp = () => {
         {success && (
           <Alert severity="success">Form Submitted Successfully</Alert>
         )}
+        <Box>
+          <Link to="/login">
+            <Typography variant="p" sx={{ color: "black" }}>
+              Already a Member ? Log in
+            </Typography>
+          </Link>
+        </Box>
       </form>
     </>
   );
