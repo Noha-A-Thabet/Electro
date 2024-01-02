@@ -1,37 +1,21 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Paper from "@mui/material/Paper";
 import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../Context/SearchContext";
 
 const SearchBar = () => {
-  const [input, setInput] = useState("");
-  const [elements, setElements] = useState([]);
-  const [displayMenu, setDisplayMenu] = useState(false);
-
-  const fetchData = async (input) => {
-    const response = await fetch("../../../Data/db.json");
-    const electroData = await response.json();
-    const Electronics = electroData.Electronics;
-    const result = Electronics.filter((electro) => {
-      return electro.name.toLowerCase().includes(input);
-    });
-    setDisplayMenu(true);
-    setElements(result);
-  };
-
-  const inputChangeHandler = (e) => {
-    const value = e.target.value;
-    setInput(value);
-    if (value.length !== 0) {
-      fetchData(value);
-    } else {
-      setElements([]);
-      setDisplayMenu(false);
-    }
-  };
+  const {
+    input,
+    setDisplayMenu,
+    elements,
+    displayMenu,
+    setInput,
+    inputChangeHandler,
+  } = useContext(SearchContext);
 
   return (
     <>
@@ -68,6 +52,11 @@ const SearchBar = () => {
                   onClick={() => {
                     setDisplayMenu(false);
                     setInput(name);
+                  }}
+                  // again
+                  onBlur={() => {
+                    console.log("blur");
+                    setInput("");
                   }}
                   style={{
                     display: "flex",

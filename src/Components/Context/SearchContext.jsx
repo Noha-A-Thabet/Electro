@@ -5,34 +5,31 @@ export const SearchContext = createContext({});
 // eslint-disable-next-line react/prop-types
 const SearchContextProvider = ({ children }) => {
   const [input, setInput] = useState("");
+  const [elements, setElements] = useState([]);
+  const [displayMenu, setDisplayMenu] = useState(false);
 
-  // fetch Data in search Bar
-  const fetchData = async (value) => {
+  // fetching Data
+  const fetchData = async (input) => {
     const response = await fetch("../../../Data/db.json");
     const electroData = await response.json();
     const Electronics = electroData.Electronics;
     const result = Electronics.filter((electro) => {
-      return (
-        value &&
-        electro &&
-        electro.name &&
-        electro.name.toLowerCase().includes(value)
-      );
+      return electro.name.toLowerCase().includes(input);
     });
-    console.log(result);
+    setDisplayMenu(true);
+    setElements(result);
   };
 
-  // get data from search input
-  const handleChange = (value) => {
+  // handle input
+  const inputChangeHandler = (e) => {
+    const value = e.target.value;
     setInput(value);
-    fetchData(value);
-  };
-
-  const processElectronicItems = (electronicItems) => {
-    return electronicItems.map((item) => {
-      const { name, image, price } = item;
-      return { name, image, price };
-    });
+    if (value.length !== 0) {
+      fetchData(value);
+    } else {
+      setElements([]);
+      setDisplayMenu(false);
+    }
   };
 
   return (
@@ -40,8 +37,12 @@ const SearchContextProvider = ({ children }) => {
       value={{
         input,
         setInput,
-        handleChange,
-        processElectronicItems,
+        elements,
+        setElements,
+        fetchData,
+        displayMenu,
+        setDisplayMenu,
+        inputChangeHandler,
       }}
     >
       {children}

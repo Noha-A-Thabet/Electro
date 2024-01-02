@@ -31,7 +31,7 @@ function App() {
             <Route path="tablets" element={<Tablets />} />
             <Route path="cart" element={<Cart />} />
             <Route path="wishlist" element={<Wishlist />} />
-            <Route path=":id" element={<SingleProduct />} />
+            {/* <Route path=":id" element={<SingleProduct />} /> */}
             <Route path=":redirect/:id" element={<SingleProduct />} />
             <Route path="userForm" element={<UserForm />} />
             <Route path="signUp" element={<SignUpForm />} />

@@ -28,14 +28,14 @@ const TabletList = ({ data }) => {
             }}
           />
         </div>
-        <Link to={`/${id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/${name}/${id}`} style={{ textDecoration: "none" }}>
           <img src={image} />
         </Link>
       </Item>
       <Item className="product">
         <Box className="product-details">
           <Item sx={{ flexGrow: 1 }}>
-            <Link to={`/${id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/${name}/${id}`} style={{ textDecoration: "none" }}>
               <h3 className="product-title">{name}</h3>
             </Link>
           </Item>
