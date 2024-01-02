@@ -12,7 +12,6 @@ import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import CategoryBar from "./Components/category-bar/CategoryBar";
 
-
 function App() {
   return (
     <React.Fragment>
