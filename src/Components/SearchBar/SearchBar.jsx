@@ -4,6 +4,7 @@ import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -42,6 +43,7 @@ const SearchBar = () => {
         onChange={inputChangeHandler}
         sx={{
           width: "180px",
+          marginTop: "-10px",
         }}
       />
 
@@ -54,20 +56,33 @@ const SearchBar = () => {
               overflowY: "scroll",
               position: "absolute",
               zIndex: "4000",
-              width: "300px",
+              width: "320px",
               backgroundColor: "white",
             }}
           >
             {elements.map((ele) => {
+              const { name, image, id } = ele;
               return (
                 <MenuItem
-                  key={ele.id}
+                  key={id}
                   onClick={() => {
-                    console.log(ele.id);
+                    setDisplayMenu(false);
+                    setInput(name);
+                  }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  <ListItemText>{ele.name}</ListItemText>
-                  <img src={ele.image} alt="" style={{ height: "20px" }} />
+                  <Link
+                    to={`/${name}/${id}`}
+                    style={{ color: "black", textDecoration: "none" }}
+                  >
+                    <ListItemText>{name}</ListItemText>
+                  </Link>
+
+                  <img src={image} alt="" style={{ height: "20px" }} />
                 </MenuItem>
               );
             })}
