@@ -3,6 +3,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 export const CartContext = createContext({});
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // eslint-disable-next-line react/prop-types
 const CartContextProvider = ({ children }) => {
@@ -19,6 +21,13 @@ const CartContextProvider = ({ children }) => {
     } else {
       updatedItem = [...cartItems, { ...product, quantity: 1 }];
     }
+    toast.success(
+      `${product.name} Added To Your Bag successfully
+    `,
+      {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      }
+    );
     setCartItems(updatedItem);
     // update added item in Local storage
     localStorage.setItem("cartItems", JSON.stringify(updatedItem));
@@ -35,6 +44,13 @@ const CartContextProvider = ({ children }) => {
         item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
       );
     }
+    toast.error(
+      `${product.name} Removed From Your Bag
+    `,
+      {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      }
+    );
     setCartItems(removedItem);
     // update removed item in Local storage
     localStorage.setItem("cartItems", JSON.stringify(removedItem));

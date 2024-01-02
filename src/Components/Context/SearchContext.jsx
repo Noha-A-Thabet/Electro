@@ -30,6 +30,9 @@ const SearchContextProvider = ({ children }) => {
       setElements([]);
       setDisplayMenu(false);
     }
+    if (input.length === 0) {
+      setDisplayMenu(false);
+    }
   };
 
   return (

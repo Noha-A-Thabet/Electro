@@ -12,6 +12,7 @@ import { Typography, Button, Container, Box } from "@mui/material";
 import "./cart.css";
 import { LoginContext } from "../Components/Context/LoginContext";
 import { useNavigate } from "react-router";
+import { ToastContainer } from "react-toastify";
 
 const Cart = () => {
   const { userLogin } = useContext(LoginContext);
@@ -29,6 +30,7 @@ const Cart = () => {
 
   return (
     <Container maxWidth="lg" sx={{ height: "100vh" }}>
+      <ToastContainer />
       <TableContainer>
         <Table aria-label="simple table">
           <TableHead className="wishlist-thead">

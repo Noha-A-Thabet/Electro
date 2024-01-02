@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import MobileList from "./MobileList";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import { ToastContainer } from "react-toastify";
 
 const Mobiles = () => {
   const { Electronics, mobileData, setMobileData, Item } =
@@ -25,6 +26,8 @@ const Mobiles = () => {
 
   return (
     <>
+      <ToastContainer />
+
       <div className="category-section">
         <div className="category-title">
           <div className="divide-line"></div>

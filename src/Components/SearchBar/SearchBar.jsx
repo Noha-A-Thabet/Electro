@@ -3,10 +3,9 @@ import Paper from "@mui/material/Paper";
 import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
-import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../Context/SearchContext";
-
+import "./searchBar.css";
 const SearchBar = () => {
   const {
     input,
@@ -19,15 +18,21 @@ const SearchBar = () => {
 
   return (
     <>
-      <TextField
+      <input
+        className="searchInput"
         id="standard-basic"
-        label="Search"
-        variant="standard"
+        type="search"
+        placeholder="Search"
         value={input}
         onChange={inputChangeHandler}
-        sx={{
-          width: "180px",
-          marginTop: "-10px",
+        onBlur={() => {
+          setInput("");
+        }}
+        style={{
+          width: "260px",
+          height: "30px",
+          padding: "10px",
+          border: "1px solid lightGray",
         }}
       />
 
@@ -35,12 +40,13 @@ const SearchBar = () => {
         <Paper sx={{ width: 320 }}>
           <MenuList
             dense
+            className="resultMenu"
             style={{
               maxHeight: "130px",
               overflowY: "scroll",
               position: "absolute",
               zIndex: "4000",
-              width: "320px",
+              width: "260px",
               backgroundColor: "white",
             }}
           >
@@ -49,14 +55,10 @@ const SearchBar = () => {
               return (
                 <MenuItem
                   key={id}
+                  className="resultInfo"
                   onClick={() => {
                     setDisplayMenu(false);
                     setInput(name);
-                  }}
-                  // again
-                  onBlur={() => {
-                    console.log("blur");
-                    setInput("");
                   }}
                   style={{
                     display: "flex",

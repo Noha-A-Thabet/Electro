@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../../WishlistContext/WishlistProvider";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
 const MobileList = ({ data }) => {
@@ -20,6 +21,7 @@ const MobileList = ({ data }) => {
 
   return (
     <Grid item xs={6} md={3} spacing={3}>
+      <ToastContainer />
       <Item className="product-image">
         <div className="wishlist">
           <FavoriteBorderOutlinedIcon
@@ -32,7 +34,6 @@ const MobileList = ({ data }) => {
           <img src={image} />
         </Link>
       </Item>
-
       <Item className="product">
         <Box className="product-details">
           <Item sx={{ flexGrow: 1 }}>
