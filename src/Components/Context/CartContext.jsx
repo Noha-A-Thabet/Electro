@@ -21,14 +21,14 @@ const CartContextProvider = ({ children }) => {
     } else {
       updatedItem = [...cartItems, { ...product, quantity: 1 }];
     }
+    setCartItems(updatedItem);
     toast.success(
-      `${product.name} Added To Your Bag successfully
+      `${product.name} Added To Bag successfully
     `,
       {
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
-    setCartItems(updatedItem);
     // update added item in Local storage
     localStorage.setItem("cartItems", JSON.stringify(updatedItem));
   };
@@ -44,16 +44,16 @@ const CartContextProvider = ({ children }) => {
         item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
       );
     }
+    localStorage.setItem("cartItems", JSON.stringify(removedItem));
+    setCartItems(removedItem);
+    // update removed item in Local storage
     toast.error(
-      `${product.name} Removed From Your Bag
+      `${product.name} Removed From Bag
     `,
       {
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
-    setCartItems(removedItem);
-    // update removed item in Local storage
-    localStorage.setItem("cartItems", JSON.stringify(removedItem));
   };
 
   // start design
@@ -107,6 +107,13 @@ const CartContextProvider = ({ children }) => {
   const clearCartItems = () => {
     setCartItems([]);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    toast.error(
+      `All Items Removed From Bag
+    `,
+      {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      }
+    );
   };
 
   return (

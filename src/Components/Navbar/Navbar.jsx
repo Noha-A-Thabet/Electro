@@ -82,7 +82,7 @@ const Navbar = () => {
 
                   {/* login */}
                   <Button className="nav-btn registericon">
-                    <Link to="userForm">
+                    <Link to="register">
                       <PersonIcon sx={{ color: "black" }} />
                     </Link>
                   </Button>
